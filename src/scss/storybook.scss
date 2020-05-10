@@ -1,0 +1,12 @@
+body {
+  padding: 20px !important;
+}
+
+.sb {
+  &-overflow {
+    height: 300px;
+    overflow: hidden;
+    background: #eee;
+    padding: 10px;
+  }
+}

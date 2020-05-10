@@ -1,0 +1,30 @@
+.dropdown {
+  &-menu{
+    .dropdown-portal.is-animated & {
+      display: block;
+      visibility: hidden;
+      opacity: 0;
+      transition: visibility, opacity, transform;
+      transition-duration: .1s;
+      transform: scale(0.95);
+      transform-origin: top left;
+    }
+
+    .dropdown-portal.is-animated.is-right & {
+      transform-origin: top right;
+    }
+  }
+
+  &-content {
+    overflow-y: auto;
+  }
+
+  &-portal {
+
+    &.is-active.is-animated .dropdown-menu {
+      opacity: 1;
+      visibility: visible;
+      transform: scale(1);
+    }
+  }
+}
