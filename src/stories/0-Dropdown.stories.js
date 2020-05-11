@@ -39,25 +39,52 @@ export const Basic = () => (
   </Dropdown>
 )
 
-export const WithScroll = () => {
+export const InsideOverflowHidden = () => {
+  return <>
+    <div>Some content</div>
+    <div className="sb-overflow sb-overflow-hidden">
+      <div>Some another content in overflow: hidden, portaled to <code>window</code></div>
+      <Dropdown
+        openOnMount={true}
+        trigger={<button className="button">Click me</button>}
+        >
+        {items}
+      </Dropdown>
+    </div>
+  </>
+}
+
+export const InsideOverflowScroll = () => {
   const [isMounted, setMounted] = useState(false)
   const containerRef = useRef(null)
 
   useEffect(() => setMounted(true), [])
 
   return <>
-    Some content
-    <div className="sb-overflow" ref={containerRef}>
-      <div>Some another content in overflow: hidden</div>
+    <div>Some content</div>
+    <div className="sb-overflow sb-overflow-scroll" ref={containerRef}>
+      <div>Some another content in overflow: scroll, portaled to this <code>div</code></div>
+      <div>Lorem ipsum</div>
+      <div>Lorem ipsum</div>
+      <div>Lorem ipsum</div>
+      <div>Lorem ipsum</div>
       {isMounted && (
         <Dropdown
           openOnMount={true}
-          // portal={containerRef.current}
+          portal={containerRef.current}
           trigger={<button className="button">Click me</button>}
           >
           {items}
         </Dropdown>
       )}
+      <div>Lorem ipsum</div>
+      <div>Lorem ipsum</div>
+      <div>Lorem ipsum</div>
+      <div>Lorem ipsum</div>
+      <div>Lorem ipsum</div>
+      <div>Lorem ipsum</div>
+      <div>Lorem ipsum</div>
+      <div>Lorem ipsum</div>
     </div>
   </>
 }

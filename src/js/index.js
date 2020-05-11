@@ -7,6 +7,7 @@ export default ({
   children,
   className,
   trigger,
+  margin = 20,
   portal = window,
   isAnimated = true,
   openOnMount = false,
@@ -52,6 +53,7 @@ export default ({
           onClickOutside={hide}
           isAnimated={isAnimated}
           portal={portal}
+          margin={margin}
           >
           { children }
         </Menu>
@@ -72,7 +74,7 @@ const Trigger = ({ children, onClick }) => {
 }
 
 const Menu = forwardRef((props, ref) => {
-  const { children, onClick, className, onClickOutside, isAnimated, portal } = props
+  const { children, onClick, className, onClickOutside, isAnimated, portal, margin } = props
   const contentRef = useRef(null)
   const triggerRef = useRef(null)
   const menuRef = useRef(null)
@@ -92,13 +94,27 @@ const Menu = forwardRef((props, ref) => {
   }, [])
 
   const calculatePos = () => {
+    let portalScroll, portalHeight, portalOffsetX, portalOffsetY
+
+    if (portal === window) {
+      portalScroll = portal.scrollY
+      portalHeight = portal.innerHeight
+      portalOffsetX = 0
+      portalOffsetY = 0
+    } else {
+      portalScroll = portal.scrollTop
+      portalHeight = portal.offsetHeight
+      const portalRect = portal.getBoundingClientRect()
+      portalOffsetX = portalRect.x
+      portalOffsetY = portalRect.y
+    }
+
     const triggerRect = triggerRef.current.getBoundingClientRect()
-    const margin = 20
     const triggerYBottom = triggerRect.y + triggerRect.height
 
-    setTop(triggerYBottom + portal.scrollY + 'px')
-    setLeft(triggerRect.x + 'px')
-    setMaxHeight(portal.innerHeight - triggerYBottom - margin + 'px')
+    setTop(triggerYBottom + portalScroll - portalOffsetY + 'px')
+    setLeft(triggerRect.x - portalOffsetX + 'px')
+    setMaxHeight(portalHeight - triggerYBottom + portalOffsetY - margin + 'px')
   }
 
   useOnclickOutside(menuRef, onClickOutside)

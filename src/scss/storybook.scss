@@ -5,8 +5,16 @@ body {
 .sb {
   &-overflow {
     height: 300px;
-    overflow: hidden;
     background: #eee;
     padding: 10px;
+    position: relative;
+
+    &-hidden {
+      overflow: hidden;
+    }
+
+    &-scroll {
+      overflow-y: scroll;
+    }
   }
 }
