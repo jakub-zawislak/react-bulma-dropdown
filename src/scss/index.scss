@@ -1,7 +1,9 @@
 .dropdown {
-  &-menu{
+  &-menu {
+    z-index: 9999;
+    display: block;
+
     .dropdown-portal.is-animated & {
-      display: block;
       visibility: hidden;
       opacity: 0;
       transition: visibility, opacity, transform;

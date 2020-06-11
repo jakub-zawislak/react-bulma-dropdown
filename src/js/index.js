@@ -6,7 +6,7 @@ import useOnclickOutside from 'react-cool-onclickoutside'
 export default ({
   children,
   className,
-  trigger,
+  trigger = 'Open dropdown',
   margin = 20,
   portal = window,
   isAnimated = true,
@@ -38,12 +38,14 @@ export default ({
     }
   }
 
+  const triggerEl = typeof trigger === 'string'
+    ? <button className="button">{trigger}</button>
+    : trigger
+
   return (
     <div ref={ref} className="dropdown">
-      <Trigger
-        onClick={onToggleClick}
-        >
-        { trigger }
+      <Trigger onClick={onToggleClick}>
+        { triggerEl }
       </Trigger>
       {isOpen &&
         <Menu
@@ -122,7 +124,10 @@ const Menu = forwardRef((props, ref) => {
   return (
     <Portal node={portal === window ? false : portal}>
       <div className={classNames(
-          'dropdown-portal', className, { 'is-active':  isMenuMounted, 'is-animated': isAnimated }
+          'dropdown-portal', className, {
+            'is-active':  isMenuMounted,
+            'is-animated': isAnimated
+          }
         )}>
         <div className="dropdown-menu" style={{top, left}} ref={menuRef}>
           <div
