@@ -1,6 +1,6 @@
 # React Bulma dropdown
 
-It's a Bulma's dropdown, with a auto-height, scroll and portal support.
+It's a Bulma's dropdown, with an auto-height, scroll and portal support.
 
 The `.dropdown-menu` is not simply rendered below the `.dropdown-trigger`, but is [portaled](https://reactjs.org/docs/portals.html) to another DOM element.
 Thanks to that your dropdown will work in element that has `overflow:hiden` or `overflow:scroll` CSS style.

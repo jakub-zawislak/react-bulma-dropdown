@@ -22,11 +22,14 @@
   }
 
   &-portal {
-
     &.is-active.is-animated .dropdown-menu {
       opacity: 1;
       visibility: visible;
       transform: scale(1);
+    }
+
+    &.is-active:not(.is-animated) .dropdown-menu {
+      display: block;
     }
   }
 }
