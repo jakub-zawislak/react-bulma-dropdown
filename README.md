@@ -27,7 +27,7 @@ import Dropdown from 'react-bulma-dropdown'
 </Dropdown>
 ```
 
-You can find more examples in [Storybook]().
+You can find more examples in [Storybook](https://jakub-zawislak.github.io/react-bulma-dropdown/).
 
 ## Properties
 
