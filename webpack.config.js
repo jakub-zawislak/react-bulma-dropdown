@@ -33,4 +33,7 @@ module.exports = {
     'react': 'umd react',
     'react-dom': 'umd react-dom',
   },
+  optimization: {
+    minimize: false
+  }
 };

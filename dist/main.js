@@ -1,6 +1,658 @@
-!function(e,t){"object"==typeof exports&&"object"==typeof module?module.exports=t(require("react"),require("react-dom")):"function"==typeof define&&define.amd?define(["react","react-dom"],t):"object"==typeof exports?exports.Dropdown=t(require("react"),require("react-dom")):e.Dropdown=t(e.react,e["react-dom"])}(window,(function(e,t){return function(e){var t={};function n(r){if(t[r])return t[r].exports;var o=t[r]={i:r,l:!1,exports:{}};return e[r].call(o.exports,o,o.exports,n),o.l=!0,o.exports}return n.m=e,n.c=t,n.d=function(e,t,r){n.o(e,t)||Object.defineProperty(e,t,{enumerable:!0,get:r})},n.r=function(e){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},n.t=function(e,t){if(1&t&&(e=n(e)),8&t)return e;if(4&t&&"object"==typeof e&&e&&e.__esModule)return e;var r=Object.create(null);if(n.r(r),Object.defineProperty(r,"default",{enumerable:!0,value:e}),2&t&&"string"!=typeof e)for(var o in e)n.d(r,o,function(t){return e[t]}.bind(null,o));return r},n.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return n.d(t,"a",t),t},n.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},n.p="",n(n.s=7)}([function(t,n){t.exports=e},function(e,t,n){e.exports=n(4)()},function(e,n){e.exports=t},function(e,t,n){var r;
-/*!
+(function webpackUniversalModuleDefinition(root, factory) {
+	if(typeof exports === 'object' && typeof module === 'object')
+		module.exports = factory(require("react"), require("react-dom"));
+	else if(typeof define === 'function' && define.amd)
+		define(["react", "react-dom"], factory);
+	else if(typeof exports === 'object')
+		exports["Dropdown"] = factory(require("react"), require("react-dom"));
+	else
+		root["Dropdown"] = factory(root["react"], root["react-dom"]);
+})(window, function(__WEBPACK_EXTERNAL_MODULE__0__, __WEBPACK_EXTERNAL_MODULE__2__) {
+return /******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, { enumerable: true, get: getter });
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// define __esModule on exports
+/******/ 	__webpack_require__.r = function(exports) {
+/******/ 		if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 			Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 		}
+/******/ 		Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 	};
+/******/
+/******/ 	// create a fake namespace object
+/******/ 	// mode & 1: value is a module id, require it
+/******/ 	// mode & 2: merge all properties of value into the ns
+/******/ 	// mode & 4: return value when already ns object
+/******/ 	// mode & 8|1: behave like require
+/******/ 	__webpack_require__.t = function(value, mode) {
+/******/ 		if(mode & 1) value = __webpack_require__(value);
+/******/ 		if(mode & 8) return value;
+/******/ 		if((mode & 4) && typeof value === 'object' && value && value.__esModule) return value;
+/******/ 		var ns = Object.create(null);
+/******/ 		__webpack_require__.r(ns);
+/******/ 		Object.defineProperty(ns, 'default', { enumerable: true, value: value });
+/******/ 		if(mode & 2 && typeof value != 'string') for(var key in value) __webpack_require__.d(ns, key, function(key) { return value[key]; }.bind(null, key));
+/******/ 		return ns;
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
+/******/
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = 7);
+/******/ })
+/************************************************************************/
+/******/ ([
+/* 0 */
+/***/ (function(module, exports) {
+
+module.exports = __WEBPACK_EXTERNAL_MODULE__0__;
+
+/***/ }),
+/* 1 */
+/***/ (function(module, exports, __webpack_require__) {
+
+/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+if (false) { var throwOnDirectAccess, ReactIs; } else {
+  // By explicitly using `prop-types` you are opting into new production behavior.
+  // http://fb.me/prop-types-in-prod
+  module.exports = __webpack_require__(4)();
+}
+
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports) {
+
+module.exports = __WEBPACK_EXTERNAL_MODULE__2__;
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
   Copyright (c) 2017 Jed Watson.
   Licensed under the MIT License (MIT), see
   http://jedwatson.github.io/classnames
-*/!function(){"use strict";var n={}.hasOwnProperty;function o(){for(var e=[],t=0;t<arguments.length;t++){var r=arguments[t];if(r){var i=typeof r;if("string"===i||"number"===i)e.push(r);else if(Array.isArray(r)&&r.length){var a=o.apply(null,r);a&&e.push(a)}else if("object"===i)for(var u in r)n.call(r,u)&&r[u]&&e.push(u)}}return e.join(" ")}e.exports?(o.default=o,e.exports=o):void 0===(r=function(){return o}.apply(t,[]))||(e.exports=r)}()},function(e,t,n){"use strict";var r=n(5);function o(){}function i(){}i.resetWarningCache=o,e.exports=function(){function e(e,t,n,o,i,a){if(a!==r){var u=new Error("Calling PropTypes validators directly is not supported by the `prop-types` package. Use PropTypes.checkPropTypes() to call them. Read more at http://fb.me/use-check-prop-types");throw u.name="Invariant Violation",u}}function t(){return e}e.isRequired=e;var n={array:e,bool:e,func:e,number:e,object:e,string:e,symbol:e,any:e,arrayOf:t,element:e,elementType:e,instanceOf:t,node:e,objectOf:t,oneOf:t,oneOfType:t,shape:t,exact:t,checkPropTypes:i,resetWarningCache:o};return n.PropTypes=n,n}},function(e,t,n){"use strict";e.exports="SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED"},function(e,t,n){},function(e,t,n){"use strict";n.r(t);var r=n(0),o=n.n(r),i=n(3),a=n.n(i),u=n(2),c=n.n(u),l=n(1),f=n.n(l),s=!("undefined"==typeof window||!window.document||!window.document.createElement),d=function(){function e(e,t){for(var n=0;n<t.length;n++){var r=t[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}();function p(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}function y(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}var m=function(e){function t(){return p(this,t),y(this,(t.__proto__||Object.getPrototypeOf(t)).apply(this,arguments))}return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}(t,e),d(t,[{key:"componentWillUnmount",value:function(){this.defaultNode&&document.body.removeChild(this.defaultNode),this.defaultNode=null}},{key:"render",value:function(){return s?(this.props.node||this.defaultNode||(this.defaultNode=document.createElement("div"),document.body.appendChild(this.defaultNode)),c.a.createPortal(this.props.children,this.props.node||this.defaultNode)):null}}]),t}(o.a.Component);m.propTypes={children:f.a.node.isRequired,node:f.a.any};var h=m,v=function(){function e(e,t){for(var n=0;n<t.length;n++){var r=t[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}();function b(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}function O(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}var g=function(e){function t(){return b(this,t),O(this,(t.__proto__||Object.getPrototypeOf(t)).apply(this,arguments))}return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}(t,e),v(t,[{key:"componentDidMount",value:function(){this.renderPortal()}},{key:"componentDidUpdate",value:function(e){this.renderPortal()}},{key:"componentWillUnmount",value:function(){c.a.unmountComponentAtNode(this.defaultNode||this.props.node),this.defaultNode&&document.body.removeChild(this.defaultNode),this.defaultNode=null,this.portal=null}},{key:"renderPortal",value:function(e){this.props.node||this.defaultNode||(this.defaultNode=document.createElement("div"),document.body.appendChild(this.defaultNode));var t=this.props.children;"function"==typeof this.props.children.type&&(t=o.a.cloneElement(this.props.children)),this.portal=c.a.unstable_renderSubtreeIntoContainer(this,t,this.props.node||this.defaultNode)}},{key:"render",value:function(){return null}}]),t}(o.a.Component),w=g;g.propTypes={children:f.a.node.isRequired,node:f.a.any};var j=c.a.createPortal?h:w,E=function(e,t){for(var n=e.target;n;){if(n.classList.contains(t))return!0;n=n.parentElement}return!1},_=function(e){return document.documentElement.clientWidth<=e.clientX||document.documentElement.clientHeight<=e.clientY},x=function(e){return!(!e.includes("touch")||!function(){if("undefined"==typeof window||"function"!=typeof window.addEventListener)return!1;var e=!1,t=Object.defineProperty({},"passive",{get:function(){e=!0}}),n=function(){return null};return window.addEventListener("test",n,t),window.removeEventListener("test",n,t),e}())&&{passive:!0}},C=function(e,t){var n=arguments.length>2&&void 0!==arguments[2]?arguments[2]:{},o=n.disabled,i=void 0!==o&&o,a=n.eventTypes,u=void 0===a?["mousedown","touchstart"]:a,c=n.excludeScrollbar,l=void 0!==c&&c,f=n.ignoreClass,s=void 0===f?"ignore-onclickoutside":f,d=Object(r.useRef)(t);Object(r.useEffect)((function(){d.current=t}),[t]),Object(r.useEffect)((function(){if(e){var t=function(t){if(!E(t,s)){var n=Array.isArray(e)?e:[e],r=[];n.forEach((function(e){var t=e.current;t&&r.push(t)})),l&&_(t)||r.length&&r.every((function(e){return!e.contains(t.target)}))&&d.current(t)}},n=function(){u.forEach((function(e){document.removeEventListener(e,t,x(e))}))};if(!i)return u.forEach((function(e){document.addEventListener(e,t,x(e))})),function(){n()};n()}}),[e,s,l,i,u])};function N(e,t){return function(e){if(Array.isArray(e))return e}(e)||function(e,t){if("undefined"==typeof Symbol||!(Symbol.iterator in Object(e)))return;var n=[],r=!0,o=!1,i=void 0;try{for(var a,u=e[Symbol.iterator]();!(r=(a=u.next()).done)&&(n.push(a.value),!t||n.length!==t);r=!0);}catch(e){o=!0,i=e}finally{try{r||null==u.return||u.return()}finally{if(o)throw i}}return n}(e,t)||function(e,t){if(!e)return;if("string"==typeof e)return k(e,t);var n=Object.prototype.toString.call(e).slice(8,-1);"Object"===n&&e.constructor&&(n=e.constructor.name);if("Map"===n||"Set"===n)return Array.from(e);if("Arguments"===n||/^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n))return k(e,t)}(e,t)||function(){throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.")}()}function k(e,t){(null==t||t>e.length)&&(t=e.length);for(var n=0,r=new Array(t);n<t;n++)r[n]=e[n];return r}var P=function(e){var t=e.children,n=e.className,i=e.trigger,a=void 0===i?"Open dropdown":i,u=e.margin,c=void 0===u?20:u,l=e.portal,f=void 0===l?window:l,s=e.isAnimated,d=void 0===s||s,p=e.openOnMount,y=void 0!==p&&p,m=e.hideOnLinkClick,h=void 0===m||m,v=Object(r.useRef)(),b=N(Object(r.useState)(y),2),O=b[0],g=b[1],w=function(){g(!1)},j=function(){g(!0)},E="string"==typeof a?o.a.createElement("button",{className:"button"},a):a;return o.a.createElement("div",{ref:v,className:"dropdown"},o.a.createElement(T,{onClick:function(){O?w():j()}},E),O&&o.a.createElement(R,{onClick:function(e){h&&e.target.closest("a.dropdown-item")&&w()},className:n,ref:v,onClickOutside:w,isAnimated:d,portal:f,margin:c},t))};P.propTypes={children:f.a.node,className:f.a.string,trigger:f.a.oneOfType([f.a.string,f.a.node]),margin:f.a.number,portal:f.a.oneOfType([f.a.instanceOf(Element),f.a.instanceOf(window.constructor)]),isAnimated:f.a.bool,openOnMount:f.a.bool,hideOnLinkClick:f.a.bool};var S=P,T=function(e){var t=e.children,n=e.onClick;return o.a.createElement("div",{className:"dropdown-trigger",onClick:n},t)},R=Object(r.forwardRef)((function(e,t){var n=e.children,i=e.onClick,u=e.className,c=e.onClickOutside,l=e.isAnimated,f=e.portal,s=e.margin,d=Object(r.useRef)(null),p=Object(r.useRef)(null),y=Object(r.useRef)(null),m=N(Object(r.useState)(0),2),h=m[0],v=m[1],b=N(Object(r.useState)(0),2),O=b[0],g=b[1],w=N(Object(r.useState)(0),2),E=w[0],_=w[1],x=N(Object(r.useState)(!1),2),k=x[0],P=x[1];Object(r.useEffect)((function(){return P(!0),p.current=t.current.querySelector(".dropdown-trigger"),S(),f.addEventListener("scroll",S),function(){return f.removeEventListener("scroll",S)}}),[]);var S=function(){var e,t,n,r;if(f===window)e=f.scrollY,t=f.innerHeight,n=0,r=0;else{e=f.scrollTop,t=f.offsetHeight;var o=f.getBoundingClientRect();n=o.x,r=o.y}var i=p.current.getBoundingClientRect(),a=i.y+i.height;v(a+e-r+"px"),g(i.x-n+"px"),_(t-a+r-s+"px")};return C(y,c),o.a.createElement(j,{node:f!==window&&f},o.a.createElement("div",{className:a()("dropdown-portal",u,{"is-active":k,"is-animated":l})},o.a.createElement("div",{className:"dropdown-menu",style:{top:h,left:O},ref:y},o.a.createElement("div",{className:"dropdown-content",onClick:i,ref:d,style:{maxHeight:E}},n))))}));n(6),t.default=S}])}));
+*/
+/* global define */
+
+(function () {
+	'use strict';
+
+	var hasOwn = {}.hasOwnProperty;
+
+	function classNames () {
+		var classes = [];
+
+		for (var i = 0; i < arguments.length; i++) {
+			var arg = arguments[i];
+			if (!arg) continue;
+
+			var argType = typeof arg;
+
+			if (argType === 'string' || argType === 'number') {
+				classes.push(arg);
+			} else if (Array.isArray(arg) && arg.length) {
+				var inner = classNames.apply(null, arg);
+				if (inner) {
+					classes.push(inner);
+				}
+			} else if (argType === 'object') {
+				for (var key in arg) {
+					if (hasOwn.call(arg, key) && arg[key]) {
+						classes.push(key);
+					}
+				}
+			}
+		}
+
+		return classes.join(' ');
+	}
+
+	if ( true && module.exports) {
+		classNames.default = classNames;
+		module.exports = classNames;
+	} else if (true) {
+		// register as 'classnames', consistent with npm package name
+		!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = (function () {
+			return classNames;
+		}).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
+				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+	} else {}
+}());
+
+
+/***/ }),
+/* 4 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+
+
+var ReactPropTypesSecret = __webpack_require__(5);
+
+function emptyFunction() {}
+function emptyFunctionWithReset() {}
+emptyFunctionWithReset.resetWarningCache = emptyFunction;
+
+module.exports = function() {
+  function shim(props, propName, componentName, location, propFullName, secret) {
+    if (secret === ReactPropTypesSecret) {
+      // It is still safe when called from React.
+      return;
+    }
+    var err = new Error(
+      'Calling PropTypes validators directly is not supported by the `prop-types` package. ' +
+      'Use PropTypes.checkPropTypes() to call them. ' +
+      'Read more at http://fb.me/use-check-prop-types'
+    );
+    err.name = 'Invariant Violation';
+    throw err;
+  };
+  shim.isRequired = shim;
+  function getShim() {
+    return shim;
+  };
+  // Important!
+  // Keep this list in sync with production version in `./factoryWithTypeCheckers.js`.
+  var ReactPropTypes = {
+    array: shim,
+    bool: shim,
+    func: shim,
+    number: shim,
+    object: shim,
+    string: shim,
+    symbol: shim,
+
+    any: shim,
+    arrayOf: getShim,
+    element: shim,
+    elementType: shim,
+    instanceOf: getShim,
+    node: shim,
+    objectOf: getShim,
+    oneOf: getShim,
+    oneOfType: getShim,
+    shape: getShim,
+    exact: getShim,
+
+    checkPropTypes: emptyFunctionWithReset,
+    resetWarningCache: emptyFunction
+  };
+
+  ReactPropTypes.PropTypes = ReactPropTypes;
+
+  return ReactPropTypes;
+};
+
+
+/***/ }),
+/* 5 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+
+
+var ReactPropTypesSecret = 'SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED';
+
+module.exports = ReactPropTypesSecret;
+
+
+/***/ }),
+/* 6 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+/* 7 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+// ESM COMPAT FLAG
+__webpack_require__.r(__webpack_exports__);
+
+// EXTERNAL MODULE: external "react"
+var external_react_ = __webpack_require__(0);
+var external_react_default = /*#__PURE__*/__webpack_require__.n(external_react_);
+
+// EXTERNAL MODULE: ./node_modules/classnames/index.js
+var classnames = __webpack_require__(3);
+var classnames_default = /*#__PURE__*/__webpack_require__.n(classnames);
+
+// EXTERNAL MODULE: external "react-dom"
+var external_react_dom_ = __webpack_require__(2);
+var external_react_dom_default = /*#__PURE__*/__webpack_require__.n(external_react_dom_);
+
+// EXTERNAL MODULE: ./node_modules/prop-types/index.js
+var prop_types = __webpack_require__(1);
+var prop_types_default = /*#__PURE__*/__webpack_require__.n(prop_types);
+
+// CONCATENATED MODULE: ./node_modules/react-portal/es/utils.js
+var canUseDOM = !!(typeof window !== 'undefined' && window.document && window.document.createElement);
+// CONCATENATED MODULE: ./node_modules/react-portal/es/Portal.js
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
+
+
+
+
+var Portal_Portal = function (_React$Component) {
+  _inherits(Portal, _React$Component);
+
+  function Portal() {
+    _classCallCheck(this, Portal);
+
+    return _possibleConstructorReturn(this, (Portal.__proto__ || Object.getPrototypeOf(Portal)).apply(this, arguments));
+  }
+
+  _createClass(Portal, [{
+    key: 'componentWillUnmount',
+    value: function componentWillUnmount() {
+      if (this.defaultNode) {
+        document.body.removeChild(this.defaultNode);
+      }
+      this.defaultNode = null;
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      if (!canUseDOM) {
+        return null;
+      }
+      if (!this.props.node && !this.defaultNode) {
+        this.defaultNode = document.createElement('div');
+        document.body.appendChild(this.defaultNode);
+      }
+      return external_react_dom_default.a.createPortal(this.props.children, this.props.node || this.defaultNode);
+    }
+  }]);
+
+  return Portal;
+}(external_react_default.a.Component);
+
+Portal_Portal.propTypes = {
+  children: prop_types_default.a.node.isRequired,
+  node: prop_types_default.a.any
+};
+
+/* harmony default export */ var es_Portal = (Portal_Portal);
+// CONCATENATED MODULE: ./node_modules/react-portal/es/LegacyPortal.js
+var LegacyPortal_createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function LegacyPortal_classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function LegacyPortal_possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function LegacyPortal_inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+// This file is a fallback for a consumer who is not yet on React 16
+// as createPortal was introduced in React 16
+
+
+
+
+
+var LegacyPortal_Portal = function (_React$Component) {
+  LegacyPortal_inherits(Portal, _React$Component);
+
+  function Portal() {
+    LegacyPortal_classCallCheck(this, Portal);
+
+    return LegacyPortal_possibleConstructorReturn(this, (Portal.__proto__ || Object.getPrototypeOf(Portal)).apply(this, arguments));
+  }
+
+  LegacyPortal_createClass(Portal, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      this.renderPortal();
+    }
+  }, {
+    key: 'componentDidUpdate',
+    value: function componentDidUpdate(props) {
+      this.renderPortal();
+    }
+  }, {
+    key: 'componentWillUnmount',
+    value: function componentWillUnmount() {
+      external_react_dom_default.a.unmountComponentAtNode(this.defaultNode || this.props.node);
+      if (this.defaultNode) {
+        document.body.removeChild(this.defaultNode);
+      }
+      this.defaultNode = null;
+      this.portal = null;
+    }
+  }, {
+    key: 'renderPortal',
+    value: function renderPortal(props) {
+      if (!this.props.node && !this.defaultNode) {
+        this.defaultNode = document.createElement('div');
+        document.body.appendChild(this.defaultNode);
+      }
+
+      var children = this.props.children;
+      // https://gist.github.com/jimfb/d99e0678e9da715ccf6454961ef04d1b
+      if (typeof this.props.children.type === 'function') {
+        children = external_react_default.a.cloneElement(this.props.children);
+      }
+
+      this.portal = external_react_dom_default.a.unstable_renderSubtreeIntoContainer(this, children, this.props.node || this.defaultNode);
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      return null;
+    }
+  }]);
+
+  return Portal;
+}(external_react_default.a.Component);
+
+/* harmony default export */ var LegacyPortal = (LegacyPortal_Portal);
+
+
+LegacyPortal_Portal.propTypes = {
+  children: prop_types_default.a.node.isRequired,
+  node: prop_types_default.a.any
+};
+// CONCATENATED MODULE: ./node_modules/react-portal/es/PortalCompat.js
+
+
+
+
+
+var PortalCompat_Portal = void 0;
+
+if (external_react_dom_default.a.createPortal) {
+  PortalCompat_Portal = es_Portal;
+} else {
+  PortalCompat_Portal = LegacyPortal;
+}
+
+/* harmony default export */ var PortalCompat = (PortalCompat_Portal);
+// CONCATENATED MODULE: ./node_modules/react-cool-onclickoutside/dist/index.esm.js
+var canUsePassiveEvents=function(){if("undefined"==typeof window||"function"!=typeof window.addEventListener)return!1;var e=!1,n=Object.defineProperty({},"passive",{get:function(){e=!0}}),t=function(){return null};return window.addEventListener("test",t,n),window.removeEventListener("test",t,n),e},DEFAULT_IGNORE_CLASS="ignore-onclickoutside",hasIgnoreClass=function(e,n){for(var t=e.target;t;){if(t.classList.contains(n))return!0;t=t.parentElement}return!1},clickedOnScrollbar=function(e){return document.documentElement.clientWidth<=e.clientX||document.documentElement.clientHeight<=e.clientY},getEventOptions=function(e){return!(!e.includes("touch")||!canUsePassiveEvents())&&{passive:!0}},useOnclickOutside=function(e,n){var t=arguments.length>2&&void 0!==arguments[2]?arguments[2]:{},i=t.disabled,r=void 0!==i&&i,o=t.eventTypes,c=void 0===o?["mousedown","touchstart"]:o,u=t.excludeScrollbar,s=void 0!==u&&u,f=t.ignoreClass,a=void 0===f?DEFAULT_IGNORE_CLASS:f,d=Object(external_react_["useRef"])(n);Object(external_react_["useEffect"])((function(){d.current=n}),[n]),Object(external_react_["useEffect"])((function(){if(e){var n=function(n){if(!hasIgnoreClass(n,a)){var t=Array.isArray(e)?e:[e],i=[];t.forEach((function(e){var n=e.current;n&&i.push(n)})),s&&clickedOnScrollbar(n)||i.length&&i.every((function(e){return!e.contains(n.target)}))&&d.current(n)}},t=function(){c.forEach((function(e){document.removeEventListener(e,n,getEventOptions(e))}))};if(!r)return c.forEach((function(e){document.addEventListener(e,n,getEventOptions(e))})),function(){t()};t()}}),[e,a,s,r,c])};/* harmony default export */ var index_esm = (useOnclickOutside);
+
+// CONCATENATED MODULE: ./src/js/Dropdown.js
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+
+
+
+var Dropdown_Dropdown = function Dropdown(_ref) {
+  var children = _ref.children,
+      className = _ref.className,
+      _ref$trigger = _ref.trigger,
+      trigger = _ref$trigger === void 0 ? 'Open dropdown' : _ref$trigger,
+      _ref$margin = _ref.margin,
+      margin = _ref$margin === void 0 ? 20 : _ref$margin,
+      _ref$portal = _ref.portal,
+      portal = _ref$portal === void 0 ? window : _ref$portal,
+      _ref$isAnimated = _ref.isAnimated,
+      isAnimated = _ref$isAnimated === void 0 ? true : _ref$isAnimated,
+      _ref$openOnMount = _ref.openOnMount,
+      openOnMount = _ref$openOnMount === void 0 ? false : _ref$openOnMount,
+      _ref$hideOnLinkClick = _ref.hideOnLinkClick,
+      hideOnLinkClick = _ref$hideOnLinkClick === void 0 ? true : _ref$hideOnLinkClick;
+  var ref = Object(external_react_["useRef"])();
+
+  var _useState = Object(external_react_["useState"])(openOnMount),
+      _useState2 = _slicedToArray(_useState, 2),
+      isOpen = _useState2[0],
+      setOpen = _useState2[1];
+
+  var onToggleClick = function onToggleClick() {
+    if (isOpen) {
+      hide();
+    } else {
+      open();
+    }
+  };
+
+  var hide = function hide() {
+    setOpen(false);
+  };
+
+  var open = function open() {
+    setOpen(true);
+  };
+
+  var handleContentClick = function handleContentClick(e) {
+    if (hideOnLinkClick && e.target.closest('a.dropdown-item')) {
+      hide();
+    }
+  };
+
+  var triggerEl = typeof trigger === 'string' ? /*#__PURE__*/external_react_default.a.createElement("button", {
+    className: "button"
+  }, trigger) : trigger;
+  return /*#__PURE__*/external_react_default.a.createElement("div", {
+    ref: ref,
+    className: "dropdown"
+  }, /*#__PURE__*/external_react_default.a.createElement(Dropdown_Trigger, {
+    onClick: onToggleClick
+  }, triggerEl), isOpen && /*#__PURE__*/external_react_default.a.createElement(Menu, {
+    onClick: handleContentClick,
+    className: className,
+    ref: ref,
+    onClickOutside: hide,
+    isAnimated: isAnimated,
+    portal: portal,
+    margin: margin
+  }, children));
+};
+
+Dropdown_Dropdown.propTypes = {
+  children: prop_types_default.a.node,
+  className: prop_types_default.a.string,
+  trigger: prop_types_default.a.oneOfType([prop_types_default.a.string, prop_types_default.a.node]),
+  margin: prop_types_default.a.number,
+  portal: prop_types_default.a.oneOfType([prop_types_default.a.instanceOf(Element), prop_types_default.a.instanceOf(window.constructor)]),
+  isAnimated: prop_types_default.a.bool,
+  openOnMount: prop_types_default.a.bool,
+  hideOnLinkClick: prop_types_default.a.bool
+};
+/* harmony default export */ var js_Dropdown = (Dropdown_Dropdown);
+
+var Dropdown_Trigger = function Trigger(_ref2) {
+  var children = _ref2.children,
+      onClick = _ref2.onClick;
+  return /*#__PURE__*/external_react_default.a.createElement("div", {
+    className: "dropdown-trigger",
+    onClick: onClick
+  }, children);
+};
+
+var Menu = /*#__PURE__*/Object(external_react_["forwardRef"])(function (props, ref) {
+  var children = props.children,
+      onClick = props.onClick,
+      className = props.className,
+      onClickOutside = props.onClickOutside,
+      isAnimated = props.isAnimated,
+      portal = props.portal,
+      margin = props.margin;
+  var contentRef = Object(external_react_["useRef"])(null);
+  var triggerRef = Object(external_react_["useRef"])(null);
+  var menuRef = Object(external_react_["useRef"])(null);
+
+  var _useState3 = Object(external_react_["useState"])(0),
+      _useState4 = _slicedToArray(_useState3, 2),
+      top = _useState4[0],
+      setTop = _useState4[1];
+
+  var _useState5 = Object(external_react_["useState"])(0),
+      _useState6 = _slicedToArray(_useState5, 2),
+      left = _useState6[0],
+      setLeft = _useState6[1];
+
+  var _useState7 = Object(external_react_["useState"])(0),
+      _useState8 = _slicedToArray(_useState7, 2),
+      maxHeight = _useState8[0],
+      setMaxHeight = _useState8[1];
+
+  var _useState9 = Object(external_react_["useState"])(false),
+      _useState10 = _slicedToArray(_useState9, 2),
+      isMenuMounted = _useState10[0],
+      setMenuMounted = _useState10[1];
+
+  Object(external_react_["useEffect"])(function () {
+    setMenuMounted(true);
+    triggerRef.current = ref.current.querySelector('.dropdown-trigger');
+    calculatePos();
+    portal.addEventListener('scroll', calculatePos);
+    return function () {
+      return portal.removeEventListener('scroll', calculatePos);
+    };
+  }, []);
+
+  var calculatePos = function calculatePos() {
+    var portalScroll, portalHeight, portalOffsetX, portalOffsetY;
+
+    if (portal === window) {
+      portalScroll = portal.scrollY;
+      portalHeight = portal.innerHeight;
+      portalOffsetX = 0;
+      portalOffsetY = 0;
+    } else {
+      portalScroll = portal.scrollTop;
+      portalHeight = portal.offsetHeight;
+      var portalRect = portal.getBoundingClientRect();
+      portalOffsetX = portalRect.x;
+      portalOffsetY = portalRect.y;
+    }
+
+    var triggerRect = triggerRef.current.getBoundingClientRect();
+    var triggerYBottom = triggerRect.y + triggerRect.height;
+    setTop(triggerYBottom + portalScroll - portalOffsetY + 'px');
+    setLeft(triggerRect.x - portalOffsetX + 'px');
+    setMaxHeight(portalHeight - triggerYBottom + portalOffsetY - margin + 'px');
+  };
+
+  index_esm(menuRef, onClickOutside);
+  return /*#__PURE__*/external_react_default.a.createElement(PortalCompat, {
+    node: portal === window ? false : portal
+  }, /*#__PURE__*/external_react_default.a.createElement("div", {
+    className: classnames_default()('dropdown-portal', className, {
+      'is-active': isMenuMounted,
+      'is-animated': isAnimated
+    })
+  }, /*#__PURE__*/external_react_default.a.createElement("div", {
+    className: "dropdown-menu",
+    style: {
+      top: top,
+      left: left
+    },
+    ref: menuRef
+  }, /*#__PURE__*/external_react_default.a.createElement("div", {
+    className: "dropdown-content",
+    onClick: onClick,
+    ref: contentRef,
+    style: {
+      maxHeight: maxHeight
+    }
+  }, children))));
+});
+// EXTERNAL MODULE: ./src/scss/index.scss
+var scss = __webpack_require__(6);
+
+// CONCATENATED MODULE: ./src/js/index.js
+
+
+/* harmony default export */ var js = __webpack_exports__["default"] = (js_Dropdown);
+
+/***/ })
+/******/ ]);
+});
