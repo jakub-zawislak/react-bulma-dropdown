@@ -1,6 +1,8 @@
 .dropdown {
   &-menu {
-    z-index: 9999;
+    .dropdown-portal & {
+      z-index: 9999;
+    }
 
     .dropdown-portal.is-animated & {
       display: block;
