@@ -9,7 +9,11 @@
     "deploy-storybook": "storybook-to-ghpages",
     "build": "webpack"
   },
-  "keywords": [],
+  "keywords": [
+    "react",
+    "bulma",
+    "dropdown"
+  ],
   "author": "Jakub Zawiślak",
   "repository": {
     "type": "git",
