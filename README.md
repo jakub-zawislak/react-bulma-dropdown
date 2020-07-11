@@ -31,16 +31,16 @@ You can find more examples in [Storybook](https://jakub-zawislak.github.io/react
 
 ## Properties
 
-| Property        | Type                      | Description                                                                                  | Default           |
-|-----------------|---------------------------|----------------------------------------------------------------------------------------------|-------------------|
-| children        | `ReactNode`               | The `.dropdown-content`'s content                                                            |                   |
-| trigger         | `string` or `ReactNode`   | The trigger rendered in the `.dropdown-trigger`                                              | `"Open dropdown"` |
-| portal          | `window` or `HTMLElement` | Element where the `.dropdown-menu` will be [portaled](https://reactjs.org/docs/portals.html) | `window`          |
-| className       | `string`                  | Optional CSS class name for the `.dropdown-menu`'s wrapper                                   | `""`              |
-| openOnMount     | `boolean`                 | Open the `.dropdown-menu` on mount                                                           | `false`           |
-| isAnimated      | `boolean`                 | Animate the `.dropdown-menu` opening                                                         | `true`            |
-| hideOnLinkClick | `boolean`                 | Close the `.dropdown-menu` after clicking an `a.dropdown-item`                               | `true`            |
-| margin          | `integer`                 | Min. distance between bottom of the dropdown and bottom of the portal                        | 20                |
+| Property        | Type                    | Description                                                                                                                                                     | Default           |
+|-----------------|-------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------|
+| children        | `ReactNode`             | The `.dropdown-content`'s content                                                                                                                               |                   |
+| trigger         | `string` or `ReactNode` | The trigger rendered in the `.dropdown-trigger`                                                                                                                 | `"Open dropdown"` |
+| portal          | `null` or `HTMLElement` | Element to which the `.dropdown-menu` will be [portaled](https://reactjs.org/docs/portals.html). If `null`, then it will be portaled to the end of the document | `null`            |
+| className       | `string`                | Optional CSS class name for the `.dropdown-menu`'s wrapper                                                                                                      | `""`              |
+| openOnMount     | `boolean`               | Open the `.dropdown-menu` on mount                                                                                                                              | `false`           |
+| isAnimated      | `boolean`               | Animate the `.dropdown-menu` opening                                                                                                                            | `true`            |
+| hideOnLinkClick | `boolean`               | Close the `.dropdown-menu` after clicking an `a.dropdown-item`                                                                                                  | `true`            |
+| margin          | `integer`               | Min. distance between bottom of the dropdown and bottom of the portal                                                                                           | 20                |
 
 ## Development
 

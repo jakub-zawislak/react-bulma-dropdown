@@ -451,207 +451,112 @@ if (external_react_dom_default.a.createPortal) {
 
 /* harmony default export */ var PortalCompat = (PortalCompat_Portal);
 // CONCATENATED MODULE: ./node_modules/react-cool-onclickoutside/dist/index.esm.js
-var canUsePassiveEvents=function(){if("undefined"==typeof window||"function"!=typeof window.addEventListener)return!1;var e=!1,n=Object.defineProperty({},"passive",{get:function(){e=!0}}),t=function(){return null};return window.addEventListener("test",t,n),window.removeEventListener("test",t,n),e},DEFAULT_IGNORE_CLASS="ignore-onclickoutside",hasIgnoreClass=function(e,n){for(var t=e.target;t;){if(t.classList.contains(n))return!0;t=t.parentElement}return!1},clickedOnScrollbar=function(e){return document.documentElement.clientWidth<=e.clientX||document.documentElement.clientHeight<=e.clientY},getEventOptions=function(e){return!(!e.includes("touch")||!canUsePassiveEvents())&&{passive:!0}},useOnclickOutside=function(e,n){var t=arguments.length>2&&void 0!==arguments[2]?arguments[2]:{},i=t.disabled,r=void 0!==i&&i,o=t.eventTypes,c=void 0===o?["mousedown","touchstart"]:o,u=t.excludeScrollbar,s=void 0!==u&&u,f=t.ignoreClass,a=void 0===f?DEFAULT_IGNORE_CLASS:f,d=Object(external_react_["useRef"])(n);Object(external_react_["useEffect"])((function(){d.current=n}),[n]),Object(external_react_["useEffect"])((function(){if(e){var n=function(n){if(!hasIgnoreClass(n,a)){var t=Array.isArray(e)?e:[e],i=[];t.forEach((function(e){var n=e.current;n&&i.push(n)})),s&&clickedOnScrollbar(n)||i.length&&i.every((function(e){return!e.contains(n.target)}))&&d.current(n)}},t=function(){c.forEach((function(e){document.removeEventListener(e,n,getEventOptions(e))}))};if(!r)return c.forEach((function(e){document.addEventListener(e,n,getEventOptions(e))})),function(){t()};t()}}),[e,a,s,r,c])};/* harmony default export */ var index_esm = (useOnclickOutside);
+function _slicedToArray(e,r){return _arrayWithHoles(e)||_iterableToArrayLimit(e,r)||_unsupportedIterableToArray(e,r)||_nonIterableRest()}function _toConsumableArray(e){return _arrayWithoutHoles(e)||_iterableToArray(e)||_unsupportedIterableToArray(e)||_nonIterableSpread()}function _arrayWithoutHoles(e){if(Array.isArray(e))return _arrayLikeToArray(e)}function _arrayWithHoles(e){if(Array.isArray(e))return e}function _iterableToArray(e){if("undefined"!=typeof Symbol&&Symbol.iterator in Object(e))return Array.from(e)}function _iterableToArrayLimit(e,r){if("undefined"!=typeof Symbol&&Symbol.iterator in Object(e)){var t=[],n=!0,o=!1,a=void 0;try{for(var i,u=e[Symbol.iterator]();!(n=(i=u.next()).done)&&(t.push(i.value),!r||t.length!==r);n=!0);}catch(e){o=!0,a=e}finally{try{n||null==u.return||u.return()}finally{if(o)throw a}}return t}}function _unsupportedIterableToArray(e,r){if(e){if("string"==typeof e)return _arrayLikeToArray(e,r);var t=Object.prototype.toString.call(e).slice(8,-1);return"Object"===t&&e.constructor&&(t=e.constructor.name),"Map"===t||"Set"===t?Array.from(e):"Arguments"===t||/^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t)?_arrayLikeToArray(e,r):void 0}}function _arrayLikeToArray(e,r){(null==r||r>e.length)&&(r=e.length);for(var t=0,n=new Array(r);t<r;t++)n[t]=e[t];return n}function _nonIterableSpread(){throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.")}function _nonIterableRest(){throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.")}var canUsePassiveEvents=function(){if("undefined"==typeof window||"function"!=typeof window.addEventListener)return!1;var e=!1,r=Object.defineProperty({},"passive",{get:function(){e=!0}}),t=function(){return null};return window.addEventListener("test",t,r),window.removeEventListener("test",t,r),e},DEFAULT_IGNORE_CLASS="ignore-onclickoutside",hasIgnoreClass=function(e,r){for(var t=e.target;t;){var n;if(null===(n=t)||void 0===n?void 0:n.classList.contains(r))return!0;t=t.parentElement}return!1},clickedOnScrollbar=function(e){return document.documentElement.clientWidth<=e.clientX||document.documentElement.clientHeight<=e.clientY},getEventOptions=function(e){return!(!e.includes("touch")||!canUsePassiveEvents())&&{passive:!0}},useOnclickOutside=function(e){var r=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{},t=r.refs,n=r.disabled,o=void 0!==n&&n,a=r.eventTypes,i=void 0===a?["mousedown","touchstart"]:a,u=r.excludeScrollbar,c=void 0!==u&&u,l=r.ignoreClass,s=void 0===l?DEFAULT_IGNORE_CLASS:l,f=Object(external_react_["useRef"])(e),d=Object(external_react_["useState"])([]),y=_slicedToArray(d,2),v=y[0],b=y[1];Object(external_react_["useEffect"])((function(){f.current=e}),[e]);var m=Object(external_react_["useCallback"])((function(e){b((function(r){return[].concat(_toConsumableArray(r),[{current:e}])}))}),[]);return Object(external_react_["useEffect"])((function(){if((null==t?void 0:t.length)||v.length){var e=function(e){if(!hasIgnoreClass(e,s)){var r=[];(t||v).forEach((function(e){var t=e.current;t&&r.push(t)})),c&&clickedOnScrollbar(e)||r.length&&r.every((function(r){return!r.contains(e.target)}))&&f.current(e)}},r=function(){i.forEach((function(r){document.removeEventListener(r,e,getEventOptions(r))}))};if(!o)return i.forEach((function(r){document.addEventListener(r,e,getEventOptions(r))})),function(){r()};r()}}),[v,s,c,o,JSON.stringify(i)]),m};/* harmony default export */ var index_esm = (useOnclickOutside);
 
-// CONCATENATED MODULE: ./src/js/Dropdown.js
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
-
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+// CONCATENATED MODULE: ./src/ts/Dropdown.tsx
 
 
 
 
 
-
-
-var Dropdown_Dropdown = function Dropdown(_ref) {
-  var children = _ref.children,
-      className = _ref.className,
-      _ref$trigger = _ref.trigger,
-      trigger = _ref$trigger === void 0 ? 'Open dropdown' : _ref$trigger,
-      _ref$margin = _ref.margin,
-      margin = _ref$margin === void 0 ? 20 : _ref$margin,
-      _ref$portal = _ref.portal,
-      portal = _ref$portal === void 0 ? window : _ref$portal,
-      _ref$isAnimated = _ref.isAnimated,
-      isAnimated = _ref$isAnimated === void 0 ? true : _ref$isAnimated,
-      _ref$openOnMount = _ref.openOnMount,
-      openOnMount = _ref$openOnMount === void 0 ? false : _ref$openOnMount,
-      _ref$hideOnLinkClick = _ref.hideOnLinkClick,
-      hideOnLinkClick = _ref$hideOnLinkClick === void 0 ? true : _ref$hideOnLinkClick;
-  var ref = Object(external_react_["useRef"])();
-
-  var _useState = Object(external_react_["useState"])(openOnMount),
-      _useState2 = _slicedToArray(_useState, 2),
-      isOpen = _useState2[0],
-      setOpen = _useState2[1];
-
-  var onToggleClick = function onToggleClick() {
-    if (isOpen) {
-      hide();
-    } else {
-      open();
-    }
-  };
-
-  var hide = function hide() {
-    setOpen(false);
-  };
-
-  var open = function open() {
-    setOpen(true);
-  };
-
-  var handleContentClick = function handleContentClick(e) {
-    if (hideOnLinkClick && e.target.closest('a.dropdown-item')) {
-      hide();
-    }
-  };
-
-  var triggerEl = typeof trigger === 'string' ? /*#__PURE__*/external_react_default.a.createElement("button", {
-    className: "button"
-  }, trigger) : trigger;
-  return /*#__PURE__*/external_react_default.a.createElement("div", {
-    ref: ref,
-    className: "dropdown"
-  }, /*#__PURE__*/external_react_default.a.createElement(Dropdown_Trigger, {
-    onClick: onToggleClick
-  }, triggerEl), isOpen && /*#__PURE__*/external_react_default.a.createElement(Menu, {
-    onClick: handleContentClick,
-    className: className,
-    ref: ref,
-    onClickOutside: hide,
-    isAnimated: isAnimated,
-    portal: portal,
-    margin: margin
-  }, children));
-};
-
-Dropdown_Dropdown.propTypes = {
-  children: prop_types_default.a.node,
-  className: prop_types_default.a.string,
-  trigger: prop_types_default.a.oneOfType([prop_types_default.a.string, prop_types_default.a.node]),
-  margin: prop_types_default.a.number,
-  portal: prop_types_default.a.oneOfType([prop_types_default.a.instanceOf(Element), prop_types_default.a.instanceOf(window.constructor)]),
-  isAnimated: prop_types_default.a.bool,
-  openOnMount: prop_types_default.a.bool,
-  hideOnLinkClick: prop_types_default.a.bool
-};
-/* harmony default export */ var js_Dropdown = (Dropdown_Dropdown);
-
-var Dropdown_Trigger = function Trigger(_ref2) {
-  var children = _ref2.children,
-      onClick = _ref2.onClick;
-  return /*#__PURE__*/external_react_default.a.createElement("div", {
-    className: "dropdown-trigger",
-    onClick: onClick
-  }, children);
-};
-
-var Menu = /*#__PURE__*/Object(external_react_["forwardRef"])(function (props, ref) {
-  var children = props.children,
-      onClick = props.onClick,
-      className = props.className,
-      onClickOutside = props.onClickOutside,
-      isAnimated = props.isAnimated,
-      portal = props.portal,
-      margin = props.margin;
-  var contentRef = Object(external_react_["useRef"])(null);
-  var triggerRef = Object(external_react_["useRef"])(null);
-  var menuRef = Object(external_react_["useRef"])(null);
-
-  var _useState3 = Object(external_react_["useState"])(0),
-      _useState4 = _slicedToArray(_useState3, 2),
-      top = _useState4[0],
-      setTop = _useState4[1];
-
-  var _useState5 = Object(external_react_["useState"])(0),
-      _useState6 = _slicedToArray(_useState5, 2),
-      left = _useState6[0],
-      setLeft = _useState6[1];
-
-  var _useState7 = Object(external_react_["useState"])(0),
-      _useState8 = _slicedToArray(_useState7, 2),
-      maxHeight = _useState8[0],
-      setMaxHeight = _useState8[1];
-
-  var _useState9 = Object(external_react_["useState"])(false),
-      _useState10 = _slicedToArray(_useState9, 2),
-      isMenuMounted = _useState10[0],
-      setMenuMounted = _useState10[1];
-
-  Object(external_react_["useEffect"])(function () {
-    setMenuMounted(true);
-    triggerRef.current = ref.current.querySelector('.dropdown-trigger');
-    calculatePos();
-    portal.addEventListener('scroll', calculatePos);
-    return function () {
-      return portal.removeEventListener('scroll', calculatePos);
+const Dropdown = ({ children, className = '', trigger = 'Open dropdown', margin = 20, portal = null, isAnimated = true, openOnMount = false, hideOnLinkClick = true, }) => {
+    const ref = Object(external_react_["useRef"])();
+    const [isOpen, setOpen] = Object(external_react_["useState"])(openOnMount);
+    const onToggleClick = () => {
+        if (isOpen) {
+            hide();
+        }
+        else {
+            open();
+        }
     };
-  }, []);
-
-  var calculatePos = function calculatePos() {
-    var portalScroll, portalHeight, portalOffsetX, portalOffsetY;
-
-    if (portal === window) {
-      portalScroll = portal.scrollY;
-      portalHeight = portal.innerHeight;
-      portalOffsetX = 0;
-      portalOffsetY = 0;
-    } else {
-      portalScroll = portal.scrollTop;
-      portalHeight = portal.offsetHeight;
-      var portalRect = portal.getBoundingClientRect();
-      portalOffsetX = portalRect.x;
-      portalOffsetY = portalRect.y;
-    }
-
-    var triggerRect = triggerRef.current.getBoundingClientRect();
-    var triggerYBottom = triggerRect.y + triggerRect.height;
-    setTop(triggerYBottom + portalScroll - portalOffsetY + 'px');
-    setLeft(triggerRect.x - portalOffsetX + 'px');
-    setMaxHeight(portalHeight - triggerYBottom + portalOffsetY - margin + 'px');
-  };
-
-  index_esm(menuRef, onClickOutside);
-  return /*#__PURE__*/external_react_default.a.createElement(PortalCompat, {
-    node: portal === window ? false : portal
-  }, /*#__PURE__*/external_react_default.a.createElement("div", {
-    className: classnames_default()('dropdown-portal', className, {
-      'is-active': isMenuMounted,
-      'is-animated': isAnimated
-    })
-  }, /*#__PURE__*/external_react_default.a.createElement("div", {
-    className: "dropdown-menu",
-    style: {
-      top: top,
-      left: left
-    },
-    ref: menuRef
-  }, /*#__PURE__*/external_react_default.a.createElement("div", {
-    className: "dropdown-content",
-    onClick: onClick,
-    ref: contentRef,
-    style: {
-      maxHeight: maxHeight
-    }
-  }, children))));
+    const hide = () => {
+        setOpen(false);
+    };
+    const open = () => {
+        setOpen(true);
+    };
+    const handleContentClick = (e) => {
+        if (hideOnLinkClick && e.target.closest("a.dropdown-item")) {
+            hide();
+        }
+    };
+    const triggerEl = typeof trigger === "string" ? external_react_default.a.createElement("button", { className: "button" }, trigger) : trigger;
+    return (external_react_default.a.createElement("div", { ref: ref, className: "dropdown" },
+        external_react_default.a.createElement(Trigger, { onClick: onToggleClick }, triggerEl),
+        isOpen && (external_react_default.a.createElement(Menu, { onClick: handleContentClick, className: className, ref: ref, onClickOutside: hide, isAnimated: isAnimated, portal: portal, margin: margin }, children))));
+};
+Dropdown.propTypes = {
+    children: prop_types["node"],
+    className: prop_types["string"],
+    trigger: prop_types["oneOfType"]([prop_types["string"], prop_types["node"]]),
+    margin: prop_types["number"],
+    portal: prop_types["instanceOf"](HTMLElement),
+    isAnimated: prop_types["bool"],
+    openOnMount: prop_types["bool"],
+    hideOnLinkClick: prop_types["bool"],
+};
+/* harmony default export */ var ts_Dropdown = (Dropdown);
+const Trigger = ({ children, onClick }) => {
+    return (external_react_default.a.createElement("div", { className: "dropdown-trigger", onClick: onClick }, children));
+};
+const Menu = Object(external_react_["forwardRef"])((props, ref) => {
+    const { children, onClick, className, onClickOutside, isAnimated, portal, margin } = props;
+    const contentRef = Object(external_react_["useRef"])(null);
+    const triggerRef = Object(external_react_["useRef"])(null);
+    const [top, setTop] = Object(external_react_["useState"])(0);
+    const [left, setLeft] = Object(external_react_["useState"])(0);
+    const [maxHeight, setMaxHeight] = Object(external_react_["useState"])(0);
+    const [isMenuMounted, setMenuMounted] = Object(external_react_["useState"])(false);
+    const menuRef = index_esm(onClickOutside);
+    Object(external_react_["useEffect"])(() => {
+        const elToListen = portal === null
+            ? window
+            : portal;
+        setMenuMounted(true);
+        triggerRef.current = ref.current.querySelector(".dropdown-trigger");
+        calculatePos();
+        elToListen.addEventListener("scroll", calculatePos);
+        return () => elToListen.removeEventListener("scroll", calculatePos);
+    }, []);
+    const calculatePos = () => {
+        let portalScroll, portalHeight, portalOffsetX, portalOffsetY;
+        if (portal === null) {
+            portalScroll = window.scrollY;
+            portalHeight = window.innerHeight;
+            portalOffsetX = 0;
+            portalOffsetY = 0;
+        }
+        else {
+            const portalRect = portal.getBoundingClientRect();
+            portalScroll = portal.scrollTop;
+            portalHeight = portal.offsetHeight;
+            portalOffsetX = portalRect.x;
+            portalOffsetY = portalRect.y;
+        }
+        const triggerRect = triggerRef.current.getBoundingClientRect();
+        const triggerYBottom = triggerRect.y + triggerRect.height;
+        setTop(triggerYBottom + portalScroll - portalOffsetY);
+        setLeft(triggerRect.x - portalOffsetX);
+        setMaxHeight(portalHeight - triggerYBottom + portalOffsetY - margin);
+    };
+    return (external_react_default.a.createElement(PortalCompat, { node: portal },
+        external_react_default.a.createElement("div", { className: classnames_default()("dropdown-portal", className, {
+                "is-active": isMenuMounted,
+                "is-animated": isAnimated,
+            }) },
+            external_react_default.a.createElement("div", { className: "dropdown-menu", style: { top: `${top}px`, left: `${left}px` }, ref: menuRef },
+                external_react_default.a.createElement("div", { className: "dropdown-content", onClick: onClick, ref: contentRef, style: { maxHeight: `${maxHeight}px` } }, children)))));
 });
+
 // EXTERNAL MODULE: ./src/scss/index.scss
 var scss = __webpack_require__(6);
 
-// CONCATENATED MODULE: ./src/js/index.js
+// CONCATENATED MODULE: ./src/ts/index.ts
 
 
-/* harmony default export */ var js = __webpack_exports__["default"] = (js_Dropdown);
+/* harmony default export */ var ts = __webpack_exports__["default"] = (ts_Dropdown);
+
 
 /***/ })
 /******/ ]);

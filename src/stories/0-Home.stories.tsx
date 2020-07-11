@@ -1,5 +1,5 @@
 import React from 'react'
-import Dropdown from '../js'
+import Dropdown from '../ts'
 import 'bulma/css/bulma.min.css'
 import '../scss/index.scss'
 import '../scss/storybook.scss'
@@ -36,7 +36,7 @@ export const CustomTrigger = () => {
 
   const trigger2 = (
     <button className="button">
-      <span>Button with icon</span>
+      <span>Button with FontAwesome icon</span>
       <span className="icon is-small">
         <i className="fa fa-angle-down"></i>
       </span>

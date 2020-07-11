@@ -1,16 +1,15 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const DtsBundleWebpack = require('dts-bundle-webpack');
 
 module.exports = {
-  entry: './src/js',
+  entry: './src/ts',
   mode: 'production',
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.tsx?$/,
         exclude: /node_modules/,
-        use: {
-          loader: "babel-loader"
-        }
+        use: 'ts-loader',
       },
       {
         test: /\.s[ac]ss$/i,
@@ -24,7 +23,14 @@ module.exports = {
   },
   plugins: [
     new MiniCssExtractPlugin(),
+    // new DtsBundleWebpack({
+    //   name: 'react-bulma-dropdown',
+    //   main: 'dist/**/*.d.ts'
+    // }),
   ],
+  resolve: {
+    extensions: [ '.tsx', '.ts', '.js' ],
+  },
   output: {
     library: 'Dropdown',
     libraryTarget: 'umd',

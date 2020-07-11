@@ -1,5 +1,5 @@
 import React, {useRef, useEffect, useState} from 'react'
-import Dropdown from '../js'
+import Dropdown from '../ts'
 import 'bulma/css/bulma.min.css'
 import '../scss/index.scss'
 import '../scss/storybook.scss'
@@ -12,8 +12,10 @@ export default {
 export const InsideOverflowHidden = () => {
   return <>
     <div className="content">
-      This dropdown has menu portaled to <code>window</code>, while rest sits in the
-      <code>&lt;div style="overflow: hidden;"&gt;</code>.
+      <p>
+        This dropdown has menu portaled to <code>window</code>, while rest sits in the
+        <code>&lt;div style="overflow: hidden;"&gt;</code>.
+      </p>
     </div>
 
     <div className="sb-overflow sb-overflow-hidden">
@@ -37,8 +39,13 @@ export const InsideOverflowScroll = () => {
 
   return <>
     <div className="content">
-      This dropdown sits in the <code>&lt;div style="overflow: scroll;"&gt;</code> and has menu
-      portaled to this div.
+      <p>
+        This dropdown sits in the <code>&lt;div style="overflow: scroll;"&gt;</code> and has menu
+        portaled to this div.
+      </p>
+      <p>
+        Try to scroll inside that grey div!
+      </p>
     </div>
 
     <div className="sb-overflow sb-overflow-scroll" ref={containerRef}>
