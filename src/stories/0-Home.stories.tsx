@@ -7,9 +7,6 @@ import { itemsGenerator } from './utils'
 
 export default {
   title: 'Home',
-  parameters: {
-    info: { inline: true },
-  },
 };
 
 export const Basic = () => (
