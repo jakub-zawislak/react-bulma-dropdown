@@ -87,7 +87,10 @@ export default Dropdown
 
 const Trigger = ({ children, onClick }) => {
   return (
-    <div className="dropdown-trigger" onClick={onClick}>
+    <div className="dropdown-trigger" onClick={e => {
+      e.stopPropagation()
+      onClick()
+    }}>
       {children}
     </div>
   )

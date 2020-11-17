@@ -498,7 +498,10 @@ Dropdown.propTypes = {
 };
 /* harmony default export */ var ts_Dropdown = (Dropdown);
 const Trigger = ({ children, onClick }) => {
-    return (external_react_default.a.createElement("div", { className: "dropdown-trigger", onClick: onClick }, children));
+    return (external_react_default.a.createElement("div", { className: "dropdown-trigger", onClick: e => {
+            e.stopPropagation();
+            onClick();
+        } }, children));
 };
 const Menu = Object(external_react_["forwardRef"])((props, ref) => {
     const { children, onClick, className, onClickOutside, isAnimated, portal, margin } = props;
