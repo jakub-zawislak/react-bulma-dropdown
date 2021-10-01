@@ -1,6 +1,6 @@
 {
   "name": "react-bulma-dropdown",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "",
   "main": "dist/main.js",
   "types": "dist/src/ts/index.d.ts",
@@ -24,7 +24,7 @@
   "dependencies": {
     "classnames": "^2.2.6",
     "prop-types": "^15.7.2",
-    "react-cool-onclickoutside": "^1.5.4",
+    "react-cool-onclickoutside": "^1.6.2",
     "react-portal": "^4.2.1"
   },
   "devDependencies": {

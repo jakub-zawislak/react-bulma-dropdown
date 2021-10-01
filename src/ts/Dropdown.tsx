@@ -1,8 +1,15 @@
-import React, { FC, ReactNode, useRef, useEffect, useState, forwardRef } from "react"
-import classNames from "classnames"
-import { Portal } from "react-portal"
-import useOnclickOutside from "react-cool-onclickoutside"
-import * as PropTypes from "prop-types"
+import React, {
+  FC,
+  ReactNode,
+  useRef,
+  useEffect,
+  useState,
+  forwardRef,
+} from 'react'
+import classNames from 'classnames'
+import { Portal } from 'react-portal'
+import useOnclickOutside from 'react-cool-onclickoutside'
+import * as PropTypes from 'prop-types'
 
 type DropdownProps = {
   children: ReactNode
@@ -25,7 +32,7 @@ const Dropdown: FC<DropdownProps> = ({
   openOnMount = false,
   hideOnLinkClick = true,
 }) => {
-  const ref = useRef()
+  const ref = useRef<HTMLDivElement>(null)
   const [isOpen, setOpen] = useState(openOnMount)
 
   const onToggleClick = () => {
@@ -45,13 +52,20 @@ const Dropdown: FC<DropdownProps> = ({
   }
 
   const handleContentClick = (e: React.MouseEvent) => {
-    if (hideOnLinkClick && (e.target as HTMLElement).closest("a.dropdown-item")) {
+    if (
+      hideOnLinkClick &&
+      (e.target as HTMLElement).closest('a.dropdown-item')
+    ) {
       hide()
     }
   }
 
   const triggerEl =
-    typeof trigger === "string" ? <button className="button">{trigger}</button> : trigger
+    typeof trigger === 'string' ? (
+      <button className="button">{trigger}</button>
+    ) : (
+      trigger
+    )
 
   return (
     <div ref={ref} className="dropdown">
@@ -87,10 +101,13 @@ export default Dropdown
 
 const Trigger = ({ children, onClick }) => {
   return (
-    <div className="dropdown-trigger" onClick={e => {
-      e.stopPropagation()
-      onClick()
-    }}>
+    <div
+      className="dropdown-trigger"
+      onClick={e => {
+        e.stopPropagation()
+        onClick()
+      }}
+    >
       {children}
     </div>
   )
@@ -108,9 +125,17 @@ type MenuProps = {
 
 const Menu = forwardRef<HTMLDivElement, MenuProps>(
   (props, ref: React.RefObject<HTMLDivElement>) => {
-    const { children, onClick, className, onClickOutside, isAnimated, portal, margin } = props
-    const contentRef = useRef(null)
-    const triggerRef = useRef(null)
+    const {
+      children,
+      onClick,
+      className,
+      onClickOutside,
+      isAnimated,
+      portal,
+      margin,
+    } = props
+    const contentRef = useRef<HTMLDivElement>(null)
+    const triggerRef = useRef<HTMLDivElement>()
     const [top, setTop] = useState(0)
     const [left, setLeft] = useState(0)
     const [maxHeight, setMaxHeight] = useState(0)
@@ -119,33 +144,44 @@ const Menu = forwardRef<HTMLDivElement, MenuProps>(
     const menuRef = useOnclickOutside(onClickOutside)
 
     useEffect(() => {
-      const elToListen = portal === null
-        ? window
-        : portal
+      if (!ref.current) {
+        return
+      }
+
+      const elToListen = portal === null ? window : portal
 
       setMenuMounted(true)
-      triggerRef.current = ref.current.querySelector(".dropdown-trigger")
+      triggerRef.current = ref.current.querySelector(
+        '.dropdown-trigger'
+      ) as HTMLDivElement
 
       calculatePos()
-      elToListen.addEventListener("scroll", calculatePos)
+      elToListen.addEventListener('scroll', calculatePos)
 
-      return () => elToListen.removeEventListener("scroll", calculatePos)
+      return () => elToListen.removeEventListener('scroll', calculatePos)
     }, [])
 
     const calculatePos = () => {
-      let portalScroll: number,
-          portalHeight: number,
-          portalOffsetX: number,
-          portalOffsetY: number
+      if (!triggerRef.current) {
+        return
+      }
+
+      let portalScrollY: number,
+        portalScrollX: number,
+        portalHeight: number,
+        portalOffsetX: number,
+        portalOffsetY: number
 
       if (portal === null) {
-        portalScroll = window.scrollY
+        portalScrollY = window.scrollY
+        portalScrollX = window.scrollX
         portalHeight = window.innerHeight
         portalOffsetX = 0
         portalOffsetY = 0
       } else {
         const portalRect = portal.getBoundingClientRect()
-        portalScroll = portal.scrollTop
+        portalScrollY = portal.scrollTop
+        portalScrollX = portal.scrollLeft
         portalHeight = portal.offsetHeight
         portalOffsetX = portalRect.x
         portalOffsetY = portalRect.y
@@ -154,17 +190,17 @@ const Menu = forwardRef<HTMLDivElement, MenuProps>(
       const triggerRect = triggerRef.current.getBoundingClientRect()
       const triggerYBottom = triggerRect.y + triggerRect.height
 
-      setTop(triggerYBottom + portalScroll - portalOffsetY)
-      setLeft(triggerRect.x - portalOffsetX)
+      setTop(triggerYBottom + portalScrollY - portalOffsetY)
+      setLeft(triggerRect.x + portalScrollX - portalOffsetX)
       setMaxHeight(portalHeight - triggerYBottom + portalOffsetY - margin)
     }
 
     return (
       <Portal node={portal}>
         <div
-          className={classNames("dropdown-portal", className, {
-            "is-active": isMenuMounted,
-            "is-animated": isAnimated,
+          className={classNames('dropdown-portal', className, {
+            'is-active': isMenuMounted,
+            'is-animated': isAnimated,
           })}
         >
           <div

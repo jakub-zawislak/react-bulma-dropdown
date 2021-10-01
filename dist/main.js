@@ -451,7 +451,135 @@ if (external_react_dom_default.a.createPortal) {
 
 /* harmony default export */ var PortalCompat = (PortalCompat_Portal);
 // CONCATENATED MODULE: ./node_modules/react-cool-onclickoutside/dist/index.esm.js
-function _slicedToArray(e,r){return _arrayWithHoles(e)||_iterableToArrayLimit(e,r)||_unsupportedIterableToArray(e,r)||_nonIterableRest()}function _toConsumableArray(e){return _arrayWithoutHoles(e)||_iterableToArray(e)||_unsupportedIterableToArray(e)||_nonIterableSpread()}function _arrayWithoutHoles(e){if(Array.isArray(e))return _arrayLikeToArray(e)}function _arrayWithHoles(e){if(Array.isArray(e))return e}function _iterableToArray(e){if("undefined"!=typeof Symbol&&Symbol.iterator in Object(e))return Array.from(e)}function _iterableToArrayLimit(e,r){if("undefined"!=typeof Symbol&&Symbol.iterator in Object(e)){var t=[],n=!0,o=!1,a=void 0;try{for(var i,u=e[Symbol.iterator]();!(n=(i=u.next()).done)&&(t.push(i.value),!r||t.length!==r);n=!0);}catch(e){o=!0,a=e}finally{try{n||null==u.return||u.return()}finally{if(o)throw a}}return t}}function _unsupportedIterableToArray(e,r){if(e){if("string"==typeof e)return _arrayLikeToArray(e,r);var t=Object.prototype.toString.call(e).slice(8,-1);return"Object"===t&&e.constructor&&(t=e.constructor.name),"Map"===t||"Set"===t?Array.from(e):"Arguments"===t||/^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t)?_arrayLikeToArray(e,r):void 0}}function _arrayLikeToArray(e,r){(null==r||r>e.length)&&(r=e.length);for(var t=0,n=new Array(r);t<r;t++)n[t]=e[t];return n}function _nonIterableSpread(){throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.")}function _nonIterableRest(){throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.")}var canUsePassiveEvents=function(){if("undefined"==typeof window||"function"!=typeof window.addEventListener)return!1;var e=!1,r=Object.defineProperty({},"passive",{get:function(){e=!0}}),t=function(){return null};return window.addEventListener("test",t,r),window.removeEventListener("test",t,r),e},DEFAULT_IGNORE_CLASS="ignore-onclickoutside",hasIgnoreClass=function(e,r){for(var t=e.target;t;){var n;if(null===(n=t)||void 0===n?void 0:n.classList.contains(r))return!0;t=t.parentElement}return!1},clickedOnScrollbar=function(e){return document.documentElement.clientWidth<=e.clientX||document.documentElement.clientHeight<=e.clientY},getEventOptions=function(e){return!(!e.includes("touch")||!canUsePassiveEvents())&&{passive:!0}},useOnclickOutside=function(e){var r=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{},t=r.refs,n=r.disabled,o=void 0!==n&&n,a=r.eventTypes,i=void 0===a?["mousedown","touchstart"]:a,u=r.excludeScrollbar,c=void 0!==u&&u,l=r.ignoreClass,s=void 0===l?DEFAULT_IGNORE_CLASS:l,f=Object(external_react_["useRef"])(e),d=Object(external_react_["useState"])([]),y=_slicedToArray(d,2),v=y[0],b=y[1];Object(external_react_["useEffect"])((function(){f.current=e}),[e]);var m=Object(external_react_["useCallback"])((function(e){b((function(r){return[].concat(_toConsumableArray(r),[{current:e}])}))}),[]);return Object(external_react_["useEffect"])((function(){if((null==t?void 0:t.length)||v.length){var e=function(e){if(!hasIgnoreClass(e,s)){var r=[];(t||v).forEach((function(e){var t=e.current;t&&r.push(t)})),c&&clickedOnScrollbar(e)||r.length&&r.every((function(r){return!r.contains(e.target)}))&&f.current(e)}},r=function(){i.forEach((function(r){document.removeEventListener(r,e,getEventOptions(r))}))};if(!o)return i.forEach((function(r){document.addEventListener(r,e,getEventOptions(r))})),function(){r()};r()}}),[v,s,c,o,JSON.stringify(i)]),m};/* harmony default export */ var index_esm = (useOnclickOutside);
+
+
+var canUsePassiveEvents = (function () {
+  if (typeof window === "undefined" || typeof window.addEventListener !== "function") return false;
+  var passive = false;
+  var options = Object.defineProperty({}, "passive", {
+    // eslint-disable-next-line getter-return
+    get: function get() {
+      passive = true;
+    }
+  });
+
+  var noop = function noop() {
+    return null;
+  };
+
+  window.addEventListener("test", noop, options);
+  window.removeEventListener("test", noop, options);
+  return passive;
+});
+
+var DEFAULT_IGNORE_CLASS = "ignore-onclickoutside";
+
+var hasIgnoreClass = function hasIgnoreClass(e, ignoreClass) {
+  var el = e.target || e;
+
+  while (el) {
+    var _el$classList;
+
+    if ((_el$classList = el.classList) != null && _el$classList.contains(ignoreClass)) return true;
+    el = el.parentElement;
+  }
+
+  return false;
+};
+
+var clickedOnScrollbar = function clickedOnScrollbar(e) {
+  return document.documentElement.clientWidth <= e.clientX || document.documentElement.clientHeight <= e.clientY;
+};
+
+var getEventOptions = function getEventOptions(type) {
+  return type.includes("touch") && canUsePassiveEvents() ? {
+    passive: true
+  } : false;
+};
+
+var index_esm_useOnclickOutside = function useOnclickOutside(callback, _temp) {
+  var _ref = _temp === void 0 ? {} : _temp,
+      refsOpt = _ref.refs,
+      disabled = _ref.disabled,
+      _ref$eventTypes = _ref.eventTypes,
+      eventTypes = _ref$eventTypes === void 0 ? ["mousedown", "touchstart"] : _ref$eventTypes,
+      excludeScrollbar = _ref.excludeScrollbar,
+      _ref$ignoreClass = _ref.ignoreClass,
+      ignoreClass = _ref$ignoreClass === void 0 ? DEFAULT_IGNORE_CLASS : _ref$ignoreClass,
+      _ref$detectIFrame = _ref.detectIFrame,
+      detectIFrame = _ref$detectIFrame === void 0 ? true : _ref$detectIFrame;
+
+  var _useState = Object(external_react_["useState"])([]),
+      refsState = _useState[0],
+      setRefsState = _useState[1];
+
+  var callbackRef = Object(external_react_["useRef"])(callback);
+  callbackRef.current = callback;
+  var ref = Object(external_react_["useCallback"])(function (el) {
+    return setRefsState(function (prevState) {
+      return [].concat(prevState, [{
+        current: el
+      }]);
+    });
+  }, []);
+  Object(external_react_["useEffect"])(function () {
+    if (!(refsOpt != null && refsOpt.length) && !refsState.length) return;
+
+    var getEls = function getEls() {
+      var els = [];
+      (refsOpt || refsState).forEach(function (_ref2) {
+        var current = _ref2.current;
+        return current && els.push(current);
+      });
+      return els;
+    };
+
+    var handler = function handler(e) {
+      if (!hasIgnoreClass(e, ignoreClass) && !(excludeScrollbar && clickedOnScrollbar(e)) && getEls().every(function (el) {
+        return !el.contains(e.target);
+      })) callbackRef.current(e);
+    };
+
+    var blurHandler = function blurHandler(e) {
+      return (// On firefox the iframe becomes document.activeElement in the next event loop
+        setTimeout(function () {
+          var _document = document,
+              activeElement = _document.activeElement;
+          if ((activeElement == null ? void 0 : activeElement.tagName) === "IFRAME" && !hasIgnoreClass(activeElement, ignoreClass) && !getEls().includes(activeElement)) callbackRef.current(e);
+        }, 0)
+      );
+    };
+
+    var removeEventListener = function removeEventListener() {
+      eventTypes.forEach(function (type) {
+        return (// @ts-expect-error
+          document.removeEventListener(type, handler, getEventOptions(type))
+        );
+      });
+      if (detectIFrame) window.removeEventListener("blur", blurHandler);
+    };
+
+    if (disabled) {
+      removeEventListener();
+      return;
+    }
+
+    eventTypes.forEach(function (type) {
+      return document.addEventListener(type, handler, getEventOptions(type));
+    });
+    if (detectIFrame) window.addEventListener("blur", blurHandler); // eslint-disable-next-line consistent-return
+
+    return function () {
+      return removeEventListener();
+    };
+  }, // eslint-disable-next-line react-hooks/exhaustive-deps
+  [refsState, ignoreClass, excludeScrollbar, disabled, detectIFrame, // eslint-disable-next-line react-hooks/exhaustive-deps
+  JSON.stringify(eventTypes)]);
+  return ref;
+};
+
+/* harmony default export */ var index_esm = (index_esm_useOnclickOutside);
+
 
 // CONCATENATED MODULE: ./src/ts/Dropdown.tsx
 
@@ -460,7 +588,7 @@ function _slicedToArray(e,r){return _arrayWithHoles(e)||_iterableToArrayLimit(e,
 
 
 const Dropdown = ({ children, className = '', trigger = 'Open dropdown', margin = 20, portal = null, isAnimated = true, openOnMount = false, hideOnLinkClick = true, }) => {
-    const ref = Object(external_react_["useRef"])();
+    const ref = Object(external_react_["useRef"])(null);
     const [isOpen, setOpen] = Object(external_react_["useState"])(openOnMount);
     const onToggleClick = () => {
         if (isOpen) {
@@ -477,11 +605,12 @@ const Dropdown = ({ children, className = '', trigger = 'Open dropdown', margin 
         setOpen(true);
     };
     const handleContentClick = (e) => {
-        if (hideOnLinkClick && e.target.closest("a.dropdown-item")) {
+        if (hideOnLinkClick &&
+            e.target.closest('a.dropdown-item')) {
             hide();
         }
     };
-    const triggerEl = typeof trigger === "string" ? external_react_default.a.createElement("button", { className: "button" }, trigger) : trigger;
+    const triggerEl = typeof trigger === 'string' ? (external_react_default.a.createElement("button", { className: "button" }, trigger)) : (trigger);
     return (external_react_default.a.createElement("div", { ref: ref, className: "dropdown" },
         external_react_default.a.createElement(Trigger, { onClick: onToggleClick }, triggerEl),
         isOpen && (external_react_default.a.createElement(Menu, { onClick: handleContentClick, className: className, ref: ref, onClickOutside: hide, isAnimated: isAnimated, portal: portal, margin: margin }, children))));
@@ -504,49 +633,55 @@ const Trigger = ({ children, onClick }) => {
         } }, children));
 };
 const Menu = Object(external_react_["forwardRef"])((props, ref) => {
-    const { children, onClick, className, onClickOutside, isAnimated, portal, margin } = props;
+    const { children, onClick, className, onClickOutside, isAnimated, portal, margin, } = props;
     const contentRef = Object(external_react_["useRef"])(null);
-    const triggerRef = Object(external_react_["useRef"])(null);
+    const triggerRef = Object(external_react_["useRef"])();
     const [top, setTop] = Object(external_react_["useState"])(0);
     const [left, setLeft] = Object(external_react_["useState"])(0);
     const [maxHeight, setMaxHeight] = Object(external_react_["useState"])(0);
     const [isMenuMounted, setMenuMounted] = Object(external_react_["useState"])(false);
     const menuRef = index_esm(onClickOutside);
     Object(external_react_["useEffect"])(() => {
-        const elToListen = portal === null
-            ? window
-            : portal;
+        if (!ref.current) {
+            return;
+        }
+        const elToListen = portal === null ? window : portal;
         setMenuMounted(true);
-        triggerRef.current = ref.current.querySelector(".dropdown-trigger");
+        triggerRef.current = ref.current.querySelector('.dropdown-trigger');
         calculatePos();
-        elToListen.addEventListener("scroll", calculatePos);
-        return () => elToListen.removeEventListener("scroll", calculatePos);
+        elToListen.addEventListener('scroll', calculatePos);
+        return () => elToListen.removeEventListener('scroll', calculatePos);
     }, []);
     const calculatePos = () => {
-        let portalScroll, portalHeight, portalOffsetX, portalOffsetY;
+        if (!triggerRef.current) {
+            return;
+        }
+        let portalScrollY, portalScrollX, portalHeight, portalOffsetX, portalOffsetY;
         if (portal === null) {
-            portalScroll = window.scrollY;
+            portalScrollY = window.scrollY;
+            portalScrollX = window.scrollX;
             portalHeight = window.innerHeight;
             portalOffsetX = 0;
             portalOffsetY = 0;
         }
         else {
             const portalRect = portal.getBoundingClientRect();
-            portalScroll = portal.scrollTop;
+            portalScrollY = portal.scrollTop;
+            portalScrollX = portal.scrollLeft;
             portalHeight = portal.offsetHeight;
             portalOffsetX = portalRect.x;
             portalOffsetY = portalRect.y;
         }
         const triggerRect = triggerRef.current.getBoundingClientRect();
         const triggerYBottom = triggerRect.y + triggerRect.height;
-        setTop(triggerYBottom + portalScroll - portalOffsetY);
-        setLeft(triggerRect.x - portalOffsetX);
+        setTop(triggerYBottom + portalScrollY - portalOffsetY);
+        setLeft(triggerRect.x + portalScrollX - portalOffsetX);
         setMaxHeight(portalHeight - triggerYBottom + portalOffsetY - margin);
     };
     return (external_react_default.a.createElement(PortalCompat, { node: portal },
-        external_react_default.a.createElement("div", { className: classnames_default()("dropdown-portal", className, {
-                "is-active": isMenuMounted,
-                "is-animated": isAnimated,
+        external_react_default.a.createElement("div", { className: classnames_default()('dropdown-portal', className, {
+                'is-active': isMenuMounted,
+                'is-animated': isAnimated,
             }) },
             external_react_default.a.createElement("div", { className: "dropdown-menu", style: { top: `${top}px`, left: `${left}px` }, ref: menuRef },
                 external_react_default.a.createElement("div", { className: "dropdown-content", onClick: onClick, ref: contentRef, style: { maxHeight: `${maxHeight}px` } }, children)))));
