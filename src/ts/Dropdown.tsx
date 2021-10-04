@@ -11,6 +11,11 @@ import { Portal } from 'react-portal'
 import useOnclickOutside from 'react-cool-onclickoutside'
 import * as PropTypes from 'prop-types'
 
+export type ControlRefType = {
+  hide: () => void
+  open: () => void
+}
+
 type DropdownProps = {
   children: ReactNode
   className?: string
@@ -20,6 +25,7 @@ type DropdownProps = {
   isAnimated?: boolean
   openOnMount?: boolean
   hideOnLinkClick?: boolean
+  controlRef?: (ref: ControlRefType) => void
 }
 
 const Dropdown: FC<DropdownProps> = ({
@@ -31,9 +37,17 @@ const Dropdown: FC<DropdownProps> = ({
   isAnimated = true,
   openOnMount = false,
   hideOnLinkClick = true,
+  controlRef: controlRefCallback,
 }) => {
   const ref = useRef<HTMLDivElement>(null)
   const [isOpen, setOpen] = useState(openOnMount)
+  const controlRef = useRef({ hide: () => {}, open: () => {} })
+
+  useEffect(() => {
+    if (controlRefCallback) {
+      controlRefCallback(controlRef.current)
+    }
+  }, [])
 
   const onToggleClick = () => {
     if (isOpen) {
@@ -50,6 +64,9 @@ const Dropdown: FC<DropdownProps> = ({
   const open = () => {
     setOpen(true)
   }
+
+  controlRef.current.open = open
+  controlRef.current.hide = hide
 
   const handleContentClick = (e: React.MouseEvent) => {
     if (
