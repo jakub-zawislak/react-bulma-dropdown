@@ -129,9 +129,9 @@ module.exports = __WEBPACK_EXTERNAL_MODULE__2__;
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
-  Copyright (c) 2017 Jed Watson.
-  Licensed under the MIT License (MIT), see
-  http://jedwatson.github.io/classnames
+	Copyright (c) 2018 Jed Watson.
+	Licensed under the MIT License (MIT), see
+	http://jedwatson.github.io/classnames
 */
 /* global define */
 
@@ -141,31 +141,56 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
 	var hasOwn = {}.hasOwnProperty;
 
 	function classNames () {
-		var classes = [];
+		var classes = '';
 
 		for (var i = 0; i < arguments.length; i++) {
 			var arg = arguments[i];
-			if (!arg) continue;
-
-			var argType = typeof arg;
-
-			if (argType === 'string' || argType === 'number') {
-				classes.push(arg);
-			} else if (Array.isArray(arg) && arg.length) {
-				var inner = classNames.apply(null, arg);
-				if (inner) {
-					classes.push(inner);
-				}
-			} else if (argType === 'object') {
-				for (var key in arg) {
-					if (hasOwn.call(arg, key) && arg[key]) {
-						classes.push(key);
-					}
-				}
+			if (arg) {
+				classes = appendClass(classes, parseValue(arg));
 			}
 		}
 
-		return classes.join(' ');
+		return classes;
+	}
+
+	function parseValue (arg) {
+		if (typeof arg === 'string' || typeof arg === 'number') {
+			return arg;
+		}
+
+		if (typeof arg !== 'object') {
+			return '';
+		}
+
+		if (Array.isArray(arg)) {
+			return classNames.apply(null, arg);
+		}
+
+		if (arg.toString !== Object.prototype.toString && !arg.toString.toString().includes('[native code]')) {
+			return arg.toString();
+		}
+
+		var classes = '';
+
+		for (var key in arg) {
+			if (hasOwn.call(arg, key) && arg[key]) {
+				classes = appendClass(classes, key);
+			}
+		}
+
+		return classes;
+	}
+
+	function appendClass (value, newClass) {
+		if (!newClass) {
+			return value;
+		}
+	
+		if (value) {
+			return value + ' ' + newClass;
+		}
+	
+		return value + newClass;
 	}
 
 	if ( true && module.exports) {
@@ -223,6 +248,7 @@ module.exports = function() {
   // Keep this list in sync with production version in `./factoryWithTypeCheckers.js`.
   var ReactPropTypes = {
     array: shim,
+    bigint: shim,
     bool: shim,
     func: shim,
     number: shim,
@@ -474,13 +500,25 @@ var canUsePassiveEvents = (function () {
 
 var DEFAULT_IGNORE_CLASS = "ignore-onclickoutside";
 
+var checkClass = function checkClass(el, cl) {
+  var _el$classList;
+
+  return (_el$classList = el.classList) == null ? void 0 : _el$classList.contains(cl);
+};
+
 var hasIgnoreClass = function hasIgnoreClass(e, ignoreClass) {
   var el = e.target || e;
 
   while (el) {
-    var _el$classList;
+    if (Array.isArray(ignoreClass)) {
+      // eslint-disable-next-line no-loop-func
+      if (ignoreClass.some(function (c) {
+        return checkClass(el, c);
+      })) return true;
+    } else if (checkClass(el, ignoreClass)) {
+      return true;
+    }
 
-    if ((_el$classList = el.classList) != null && _el$classList.contains(ignoreClass)) return true;
     el = el.parentElement;
   }
 
@@ -587,9 +625,15 @@ var index_esm_useOnclickOutside = function useOnclickOutside(callback, _temp) {
 
 
 
-const Dropdown = ({ children, className = '', trigger = 'Open dropdown', margin = 20, portal = null, isAnimated = true, openOnMount = false, hideOnLinkClick = true, }) => {
+const Dropdown = ({ children, className = '', trigger = 'Open dropdown', margin = 20, portal = null, isAnimated = true, openOnMount = false, hideOnLinkClick = true, controlRef: controlRefCallback, onOpen, onClose, }) => {
     const ref = Object(external_react_["useRef"])(null);
     const [isOpen, setOpen] = Object(external_react_["useState"])(openOnMount);
+    const controlRef = Object(external_react_["useRef"])({ hide: () => { }, open: () => { } });
+    Object(external_react_["useEffect"])(() => {
+        if (controlRefCallback) {
+            controlRefCallback(controlRef.current);
+        }
+    }, []);
     const onToggleClick = () => {
         if (isOpen) {
             hide();
@@ -600,17 +644,25 @@ const Dropdown = ({ children, className = '', trigger = 'Open dropdown', margin 
     };
     const hide = () => {
         setOpen(false);
+        if (onClose) {
+            onClose();
+        }
     };
     const open = () => {
         setOpen(true);
+        if (onOpen) {
+            onOpen();
+        }
     };
+    controlRef.current.open = open;
+    controlRef.current.hide = hide;
     const handleContentClick = (e) => {
         if (hideOnLinkClick &&
             e.target.closest('a.dropdown-item')) {
             hide();
         }
     };
-    const triggerEl = typeof trigger === 'string' ? (external_react_default.a.createElement("button", { className: "button" }, trigger)) : (trigger);
+    const triggerEl = typeof trigger === 'string' ? (external_react_default.a.createElement("button", { className: "button", type: "button" }, trigger)) : (trigger);
     return (external_react_default.a.createElement("div", { ref: ref, className: "dropdown" },
         external_react_default.a.createElement(Trigger, { onClick: onToggleClick }, triggerEl),
         isOpen && (external_react_default.a.createElement(Menu, { onClick: handleContentClick, className: className, ref: ref, onClickOutside: hide, isAnimated: isAnimated, portal: portal, margin: margin }, children))));

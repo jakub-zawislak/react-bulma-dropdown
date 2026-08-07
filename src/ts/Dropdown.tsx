@@ -26,6 +26,8 @@ type DropdownProps = {
   openOnMount?: boolean
   hideOnLinkClick?: boolean
   controlRef?: (ref: ControlRefType) => void
+  onOpen?: () => void
+  onClose?: () => void
 }
 
 const Dropdown: FC<DropdownProps> = ({
@@ -38,6 +40,8 @@ const Dropdown: FC<DropdownProps> = ({
   openOnMount = false,
   hideOnLinkClick = true,
   controlRef: controlRefCallback,
+  onOpen,
+  onClose,
 }) => {
   const ref = useRef<HTMLDivElement>(null)
   const [isOpen, setOpen] = useState(openOnMount)
@@ -59,10 +63,18 @@ const Dropdown: FC<DropdownProps> = ({
 
   const hide = () => {
     setOpen(false)
+
+    if (onClose) {
+      onClose()
+    }
   }
 
   const open = () => {
     setOpen(true)
+
+    if (onOpen) {
+      onOpen()
+    }
   }
 
   controlRef.current.open = open
@@ -79,7 +91,9 @@ const Dropdown: FC<DropdownProps> = ({
 
   const triggerEl =
     typeof trigger === 'string' ? (
-      <button className="button">{trigger}</button>
+      <button className="button" type="button">
+        {trigger}
+      </button>
     ) : (
       trigger
     )

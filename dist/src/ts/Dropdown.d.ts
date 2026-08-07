@@ -1,4 +1,8 @@
 import { FC, ReactNode } from 'react';
+export declare type ControlRefType = {
+    hide: () => void;
+    open: () => void;
+};
 declare type DropdownProps = {
     children: ReactNode;
     className?: string;
@@ -8,6 +12,9 @@ declare type DropdownProps = {
     isAnimated?: boolean;
     openOnMount?: boolean;
     hideOnLinkClick?: boolean;
+    controlRef?: (ref: ControlRefType) => void;
+    onOpen?: () => void;
+    onClose?: () => void;
 };
 declare const Dropdown: FC<DropdownProps>;
 export default Dropdown;

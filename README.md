@@ -42,6 +42,9 @@ You can find more examples in [Storybook](https://jakub-zawislak.github.io/react
 | hideOnLinkClick | `boolean`                       | Close the `.dropdown-menu` after clicking an `a.dropdown-item`                                                                                                  | `true`            |
 | margin          | `integer`                       | Min. distance between bottom of the dropdown and bottom of the portal                                                                                           | 20                |
 | controlRef      | `(ref: ControlRefType) => void` | A ref that consist object with `open` and `close` methods.                                                                                                      | undefined         |
+| onOpen          | `() => void`                    | Called after the `.dropdown-menu` opens                                                                                                                         | undefined         |
+| onClose         | `() => void`                    | Called after the `.dropdown-menu` closes                                                                                                                        | undefined         |
+
 
 ## Development
 

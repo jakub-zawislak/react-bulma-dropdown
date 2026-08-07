@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react'
+import React, { useRef, useEffect, useState } from 'react'
 import Dropdown, { ControlRefType } from '../ts'
 import 'bulma/css/bulma.min.css'
 import '../scss/index.scss'
@@ -95,3 +95,28 @@ export const CustomMargin = () => (
     </Dropdown>
   </>
 )
+
+export const OpenCloseEvents = () => {
+  const [isOpened, setOpened] = useState(false)
+
+  const onOpen = () => {
+    setOpened(true)
+  }
+
+  const onClose = () => {
+    setOpened(false)
+  }
+
+  return (
+    <>
+      {isOpened ? (
+        <div className="notification is-success">Dropdown is opened</div>
+      ) : (
+        <div className="notification is-danger">Dropdown is closed</div>
+      )}
+      <Dropdown onOpen={onOpen} onClose={onClose}>
+        {itemsGenerator(100)}
+      </Dropdown>
+    </>
+  )
+}
